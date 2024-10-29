@@ -1,0 +1,4 @@
+[24-Oct-2024 21:20:49 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/agrouls/public_html/agrouls_backend/connection.php on line 3
+[24-Oct-2024 21:30:02 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/agrouls/public_html/agrouls_backend/connection.php on line 3
+[24-Oct-2024 21:42:30 UTC] PHP Warning:  mysqli::__construct(): (HY000/1044): Access denied for user 'agrouls_admin'@'localhost' to database 'agrouls_official' in /home/agrouls/public_html/agrouls_backend/connection.php on line 3
+[24-Oct-2024 21:43:53 UTC] PHP Warning:  mysqli::__construct(): (HY000/1044): Access denied for user 'agrouls_admin'@'localhost' to database 'agrouls_official' in /home/agrouls/public_html/agrouls_backend/connection.php on line 3
