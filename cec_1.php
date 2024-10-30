@@ -8,7 +8,7 @@
     include 'connection.php';
 
     // Recuperar datos de la tabla de imágenes
-    $sql = "SELECT id, nombre, cargo FROM escuela_3 order by orden";
+    $sql = "SELECT id, presentacion, directorio, programa FROM cec_1 order by orden";
     $result = $conn->query($sql);
 
     $filas = array();

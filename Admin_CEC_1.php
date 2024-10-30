@@ -10,7 +10,7 @@
     switch ($method) {
         case 'GET':
             // Ejecutar la consulta SQL y almacenar el resultado en la variable $result
-            $sql = "SELECT * FROM seminario ORDER BY orden";
+            $sql = "SELECT * FROM cec_1 ORDER BY orden";
             $result = $conn->query($sql);
             $rows = array(); // Inicializar un array vacío para almacenar los registros recuperados
             // Iterar sobre cada fila en el conjunto de resultados
@@ -28,7 +28,7 @@
             //echo "Action: $action";
 
             if ($action === 'new') {
-                $sql = "SELECT orden FROM seminario ORDER BY orden DESC LIMIT 1"; // Consulta SQL para obtener el último orden
+                $sql = "SELECT orden FROM cec_1 ORDER BY orden DESC LIMIT 1"; // Consulta SQL para obtener el último orden
 
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -40,13 +40,12 @@
                 }
 
                 // Variables adicionales
-                $nombre = $_POST['nombre']; // Obtiene el título de la noticia
-                $year = $_POST['year']; // Obtiene el título de la noticia
-                $titulo = $_POST['titulo']; // Obtiene el título de la noticia
-                $clave = $_POST['clave']; // Obtiene el título de la noticia
+                $presentacion = $_POST['presentacion']; // Obtiene el título de la noticia
+                $directorio = $_POST['directorio']; // Obtiene el título de la noticia
+                $programa = $_POST['programa']; // Obtiene el título de la noticia
 
                 // Insertar los datos en la base de datos
-                $sql = "INSERT INTO seminario (nombre, year, titulo, clave, orden) VALUES ('$nombre', '$year', '$titulo', '$clave', '$orden')";
+                $sql = "INSERT INTO cec_1 (presentacion, directorio, programa, orden) VALUES ('$presentacion', '$directorio', '$programa', '$orden')";
 
                 if ($conn->query($sql) === TRUE) { // Si la consulta se ejecuta correctamente
                     echo "Image and data saved to database. Well Done!"; // Muestra un mensaje de éxito
@@ -59,7 +58,7 @@
                 foreach ($items as $item) {
                     $id = $item['id'];
                     $order = $item['order'];
-                    $sql = "UPDATE seminario SET orden = ? WHERE id = ?";
+                    $sql = "UPDATE cec_1 SET orden = ? WHERE id = ?";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("ii", $order, $id);
                     $stmt->execute();
@@ -76,13 +75,11 @@
             $_PUT = json_decode(file_get_contents("php://input"), true); // Obtener los datos enviados en la solicitud
 
             $id = $_PUT['editId'];
-            $nombre = $_PUT['editNombre']; // Obtiene el título de la noticia
-            $year = $_PUT['editYear']; // Obtiene el título de la noticia
-            $titulo = $_PUT['editTitulo']; // Obtiene el título de la noticia
-            $clave = $_PUT['editClave']; // Obtiene el título de la noticia
+            $presentacion = $_PUT['editPresentacion']; // Obtiene el título de la noticia
+            $directorio = $_PUT['editDirectorio']; // Obtiene el título de la noticia
+            $programa = $_PUT['editPrograma']; // Obtiene el título de la noticia
 
-
-            $sql = "UPDATE seminario SET nombre='$nombre', year='$year', titulo='$titulo', clave='$clave' WHERE id=$id";
+            $sql = "UPDATE cec_1 SET presentacion='$presentacion', directorio='$directorio' programa='$programa' WHERE id=$id";
 
             if ($conn->query($sql) === TRUE) { // Si la consulta se ejecuta correctamente
                 echo "Datos actualizados"; // Muestra un mensaje de éxito
@@ -96,7 +93,7 @@
             $data = json_decode(file_get_contents("php://input"), true); // Obtener los datos enviados en la solicitud
             $id = $data['id']; // Obtener el ID del registro a eliminar
 
-            $sql = "DELETE FROM seminario WHERE id=$id"; // Consulta SQL para eliminar el registro
+            $sql = "DELETE FROM cec_1 WHERE id=$id"; // Consulta SQL para eliminar el registro
             if ($conn->query($sql) === TRUE) { // Si la consulta se ejecuta correctamente
                 echo "Registro eliminado correctamente"; // Muestra un mensaje de éxito
             } else { // Si hay un error en la consulta
